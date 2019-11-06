@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/azure-demo.iml" filepath="$PROJECT_DIR$/azure-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/azure-demo-rest/azure-demo-rest.iml" filepath="$PROJECT_DIR$/azure-demo-rest/azure-demo-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/azure-demo-ui/azure-demo-ui.iml" filepath="$PROJECT_DIR$/azure-demo-ui/azure-demo-ui.iml" />
+    </modules>
+  </component>
+</project>
