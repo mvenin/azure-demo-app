@@ -6,16 +6,15 @@ import ro.mve.model.UserDto;
 import ro.mve.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,29 +22,31 @@ import java.util.Optional;
 
 
 @Service(value = "userService")
-public class UserServiceImpl implements UserDetailsService, UserService {
+public class UserServiceImpl implements
+		//UserDetailsService,
+		UserService {
 	
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
-	private BCryptPasswordEncoder bcryptEncoder;
+//	@Autowired(required = false)
+//	private BCryptPasswordEncoder bcryptEncoder;
 
 	@PersistenceContext EntityManager em;
 
-	@Autowired(required = false) DataSource dataSource;
+//	@Autowired(required = false) DataSource dataSource;
 
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userDao.findByUsername(username);
-		if(user == null){
-			throw new UsernameNotFoundException("Invalid username or password.");
-		}
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
-	}
-
-	private List<SimpleGrantedAuthority> getAuthority() {
-		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
-	}
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		User user = userDao.findByUsername(username);
+//		if(user == null){
+//			throw new UsernameNotFoundException("Invalid username or password.");
+//		}
+//		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
+//	}
+//
+//	private List<SimpleGrantedAuthority> getAuthority() {
+//		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//	}
 
 	public List<User> findAll() {
 		List<User> list = new ArrayList<>();
@@ -85,7 +86,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	    newUser.setUsername(user.getUsername());
 	    newUser.setFirstName(user.getFirstName());
 	    newUser.setLastName(user.getLastName());
-	    newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+	    newUser.setPassword(user.getPassword()/*bcryptEncoder.encode(user.getPassword())*/);
 		newUser.setAge(user.getAge());
 		newUser.setSalary(user.getSalary());
         return userDao.save(newUser);

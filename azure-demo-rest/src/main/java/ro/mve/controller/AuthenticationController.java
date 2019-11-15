@@ -4,9 +4,9 @@ import ro.mve.config.JwtTokenUtil;
 import ro.mve.model.*;
 import ro.mve.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+//import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import ro.mve.model.ApiResponse;
 import ro.mve.model.AuthToken;
@@ -15,11 +15,11 @@ import ro.mve.model.User;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/token")
+@RequestMapping("/api/token")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -28,12 +28,12 @@ public class AuthenticationController {
     private UserService userService;
 
     @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
-    public ApiResponse<AuthToken> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
+    public ApiResponse<AuthToken> register(@RequestBody LoginUser loginUser) throws /*Authentication*/Exception {
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
-        final User user = userService.findOne(loginUser.getUsername());
-        final String token = jwtTokenUtil.generateToken(user);
-        return new ApiResponse<>(200, "success",new AuthToken(token, user.getUsername()));
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
+        //final User user = userService.findOne(loginUser.getUsername());
+        final String token = jwtTokenUtil.generateToken("alex123");
+        return new ApiResponse<>(200, "success", new AuthToken(token, "alex123"));
     }
 
 }

@@ -7,15 +7,20 @@
 
     <display-name>Eambrosia Public REST</display-name>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
     <servlet>
-        <servlet-name>eambrosia-rest</servlet-name>
+        <servlet-name>azure-demo-app</servlet-name>
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>eambrosia-rest</servlet-name>
+        <servlet-name>azure-demo-app</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

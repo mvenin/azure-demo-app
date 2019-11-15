@@ -11,8 +11,8 @@ export class ApiService {
 
   readonly baseUrl: string = ''; // http://localhost:7001/azure-demo-app/
 
-  readonly usersUrl: string = this.baseUrl + 'users/';
-  readonly tokenUrl: string = this.baseUrl + 'token/generate-token';
+  readonly usersUrl: string = this.baseUrl + 'api/users/';
+  readonly tokenUrl: string = this.baseUrl + 'api/token/generate-token';
 
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.tokenUrl, loginPayload);

@@ -18,6 +18,10 @@
             <wls:package-name>javax.validation.*</wls:package-name>
             <wls:package-name>org.hibernate.*</wls:package-name>
             <wls:package-name>com.google.*</wls:package-name>
+            <wls:package-name>org.hsqldb.*</wls:package-name>
+            <wls:package-name>org.springframework.*</wls:package-name>
+            <wls:package-name>io.jsonwebtoken.*</wls:package-name>
+            <wls:package-name>com.querydsl.*</wls:package-name>
         </wls:prefer-application-packages>
 
         <wls:prefer-application-resources>
